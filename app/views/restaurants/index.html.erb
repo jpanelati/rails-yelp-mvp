@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center">
+  <h1>Restaurants</h1>
+  <%= link_to "Add a Restaurant", new_restaurant_path, class: "btn btn-primary mt-2 ml-5 h-25" %>
+</div>
+
+<div class="container">
+  <% @restaurants.each do |rest| %>
+    <div class="row">
+      <div class="col"><strong><%= rest.name %></strong></div>
+      <div class="col"><%= rest.address %></div>
+      <div class="col"><%= rest.phone_number %></div>
+      <div class="col"><%= rest.category %></div>
+      <div class="col-"><%= link_to "Details", restaurant_path(rest), class: "mr-2" %></div>
+      <div class="col-"><%= link_to "Write a review", new_restaurant_review_path(rest), class: "ml-2" %></div>
+    </div>
+    <% rest.reviews.each do |review| %>
+    <p class="ml-5"><%= review.content %> - <%= "⭐" * review.rating %></p>
+    <% end %>
+  <% end %>
+</div>
+2
